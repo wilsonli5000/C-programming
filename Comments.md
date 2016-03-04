@@ -31,7 +31,18 @@ Basic class structure:
 
 Compilation process:
 *	Preprocessing:
+	
 	Preprocessor handles the "\#include, \#define, \#if ... \#enfif, \#ifdef ... \#endif, \#ifndef...\#endif".
+	
 	\#define defines a constant variable. eg. \#define PI 3.1415926
+	
 	\#if ... \#endif will control execution of lines in between. [example]{https://github.com/wilsonli5000/Cpp-programming/blob/master/ifendif.cpp}
+	
 	\#ifdef ... \endif will include the lines in between when the symbol is defined. It is extremely important to add this checking mechanism in each header file to prevent multiple includes in other files. [example]{https://github.com/wilsonli5000/Cpp-programming/blob/master/BigInteger.h}
+
+*	Syntax checking: check whether variables and functions are declaired and defined.
+*	Object code generation: g++ -c sample.cpp
+*	Linking: Links necessary .o files into a single executive file. example: g++ main.o BigInteger.o -o main
+
+
+
