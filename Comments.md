@@ -1,10 +1,10 @@
-Comments
+Basic class structure:
 
 *	All the class declarations are in .h file. 
 	It includes the declaration of all variables and functions of the class. 
 
 *	All implementations are in .cpp file.
-	#include ".h" in the begining. Then there is no need to reclaim the class header again. 
+	include ".h" in the begining. Then there is no need to reclaim the class header again. 
 	Directly start implementing functions.
 	There are two types of functions, class function and friend function.
 
@@ -28,3 +28,6 @@ Comments
 	Use as friend func. 
 	BigInteger operator+(const BigInteger & a, const BigInteger & b);
 	istream & operator>>(istream & cin, BigInteger & a);
+
+Compilation process:
+*	Preprocessing: 
