@@ -1,3 +1,6 @@
+#ifdef BIGINTEGER_H
+#define BIGINTEGER_H
+
 using namespace std;
 
 class BigInteger{
@@ -24,3 +27,5 @@ istream & operator>>(istream & cin, BigInteger & a);
 ostream & operator<<(ostream & cout, const BigInteger & a);
 BigInteger & operator++(BigInteger & a);
 BigInteger operator++(BigInteger & a, int usless);
+
+#endif
