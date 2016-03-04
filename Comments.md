@@ -44,5 +44,19 @@ Compilation process:
 *	Object code generation: g++ -c sample.cpp
 *	Linking: Links necessary .o files into a single executive file. example: g++ main.o BigInteger.o -o main
 
+Separate Compilation:
+*	"make" will only make necessary recompilation. Makefile sepcifies the dependency of files. Two parts for each rule, target and dependent file list. eg. main.o main.cpp BigInteger.h
+
+	Second line is the command to generate the target. This line starts with a tab. eg. 	g++ -c main.cpp
+
+	In terminal, we can make specific target by "make main.o".
+
+	Tricks: we can define variables in Makefile. Shortcut variable notations: \$@ -> target, \$^ -> dependency list, \$< -> left most item in dependency list. 
+
+	Fake targets: clean:
+				rm main.o BigInteger.o
+	.PHONY: clean	
+
+	This can remove all the .o files.  
 
 
