@@ -30,4 +30,8 @@ Basic class structure:
 	istream & operator>>(istream & cin, BigInteger & a);
 
 Compilation process:
-*	Preprocessing: 
+*	Preprocessing:
+	Preprocessor handles the "\#include, \#define, \#if ... \#enfif, \#ifdef ... \#endif, \#ifndef...\#endif".
+	\#define defines a constant variable. eg. \#define PI 3.1415926
+	\#if ... \#endif will control execution of lines in between. [example]{./ifendif.cpp}
+	
