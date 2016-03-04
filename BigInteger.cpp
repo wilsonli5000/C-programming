@@ -1,4 +1,4 @@
-#include <string>
+#include <iostream>
 #include "BigInteger.h"
 
 using namespace std;
@@ -22,7 +22,7 @@ void BigInteger::setNumber(string s){
 		value[j++] = s[i] - '0';
 }
 
-string BigInteger::getNumber(){
+string BigInteger::getNumber() const{
 	//output the number
 	string number;
 	number = number + (sign == '-' ? "-" : "");
@@ -46,7 +46,7 @@ BigInteger operator+(const BigInteger & a, const BigInteger & b){
 
 		//set value
 		int carry = 0, i;
-		for (i = 0; i < a.length || i < b,length; i++){
+		for (i = 0; i < a.length || i < b.length; i++){
 			int tmp = (i < a.length ? a.value[i] : 0) + (i < b.length ? b.value[i] : 0) + carry;
 			c.value[i] = tmp % 10;
 			carry = tmp / 10;
@@ -58,10 +58,19 @@ BigInteger operator+(const BigInteger & a, const BigInteger & b){
 		c.length = i;
 	}
 	else if (a.sign == '-' && b.sign == '-'){
+		BigInteger a2 = a;
+		a2.sign = '+';
+		BigInteger b2 = b;
+		b2.sign = '+';
+		c = a2 + b2;
+		c.sign = '-';
+		
+		/* if not strict, no const a, b
 		a.sign = '+';
 		b.sign = '+';
 		c = a + b;
 		c.sign = '-';
+		*/
 	}
 	else if (a.sign == '+' && b.sign == '-'){
 		//set value
@@ -71,10 +80,11 @@ BigInteger operator+(const BigInteger & a, const BigInteger & b){
 			int tmp = (i < a.length ? a.value[i] : 0) + 10 - (i < b.length ? b.value[i] : 0) + carry;
 			c.value[i] = tmp % 10;
 			//carry = -1 means borrowed, carry = 0 means not borrowed.
-			carry = temp % 10 - 1;
+			carry = tmp / 10 - 1;
 		}
 		//set length, get rid of all the 0s in the front. 
 		c.length = i;
+
 		while (c.value[c.length - 1] == 0 && c.length > 0)
 			c.length--;
 		c.length = c.length > 0 ? c.length : 1;
@@ -87,7 +97,7 @@ BigInteger operator+(const BigInteger & a, const BigInteger & b){
 			d.sign = '+';
 			d.length = i + 1;
 			//d is 000001
-			for (int j = 0; j < d.length; j++)
+			for (int j = 0; j < i; j++)
 				d.value[j] = 0;
 			d.value[i] = 1;
 			c.sign = '-';
@@ -108,7 +118,7 @@ istream & operator>>(istream & cin, BigInteger & a){
 }
 
 ostream & operator<<(ostream & cout, const BigInteger & a){
-	cout << "The number is " << a.getNumber() << endl;
+	cout << a.getNumber();
 }
 
 BigInteger & operator++(BigInteger & a){
@@ -122,6 +132,6 @@ BigInteger operator++(BigInteger & a, int usless){
 	BigInteger origin = a;
 	BigInteger one;
 	one.setNumber("1");
-	a = a + 1;
+	a = a + one;
 	return origin;
 }

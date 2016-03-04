@@ -1,6 +1,3 @@
-#ifdef BIGINTEGER_H
-#define BIGINTEGER_H
-
 using namespace std;
 
 class BigInteger{
@@ -12,14 +9,14 @@ class BigInteger{
 	public:
 		void setNumber(string s);
 		string getNumber() const;
-	//friend BigInteger add(const BigInteger & a, const BigInteger & b);
-	friend BigInteger operator+(const BigInteger & a, const BigInteger & b);
-	friend istream & operator>>(istream & cin, BigInteger & a);
-	friend ostream & operator<<(ostream & cout, const BigInteger & a);
-	//this is prefix increament
-	friend BigInteger & operator++(BigInteger & a);
-	//this is postfix increment, the second parameter is just for distinguishment.
-	friend BigInteger operator++(BigInteger & a, int usless);
+		//friend BigInteger add(const BigInteger & a, const BigInteger & b);
+		friend BigInteger operator+(const BigInteger & a, const BigInteger & b);
+		friend istream & operator>>(istream & cin, BigInteger & a);
+		friend ostream & operator<<(ostream & cout, const BigInteger & a);
+		//this is prefix increament
+		friend BigInteger & operator++(BigInteger & a);
+		//this is postfix increment, the second parameter is just for distinguishment.
+		friend BigInteger operator++(BigInteger & a, int usless);
 };
 
 BigInteger operator+(const BigInteger & a, const BigInteger & b);
@@ -28,4 +25,3 @@ ostream & operator<<(ostream & cout, const BigInteger & a);
 BigInteger & operator++(BigInteger & a);
 BigInteger operator++(BigInteger & a, int usless);
 
-#endif

@@ -9,11 +9,17 @@ int main(){
 	cout << "Please enter a long number: ";
 	string s;
 	cin >> s;
-
 	a.setNumber(s);
 
+	BigInteger b;
+	cout << "Please enter a long number: ";
+	cin >> s;
+	b.setNumber(s);
+
+	BigInteger c = a + b;
+
 	//output number
-	cout << "The number is " << a.getNumber() << endl;
+	cout << "The sum is " << c << endl;
 	
 	return 0;
 }
